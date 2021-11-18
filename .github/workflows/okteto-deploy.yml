@@ -1,0 +1,27 @@
+name: deploy
+on:
+  workflow_run:
+    workflows: ["build"]
+    branches: [main]
+    types: [completed]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: context
+        uses: okteto/context@latest
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+      - name: okteto namespace
+        uses: okteto/namespace@latest
+        with:
+          name: liimootbm
+
+      - name: okteto pipeline
+        uses: okteto/pipeline@latest
+        with:
+          name: papaya-usermanagement-be

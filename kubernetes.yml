@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: papaya-usermanagement-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: papaya-usermanagement-be
+  template:
+    metadata:
+      labels:
+        app: papaya-usermanagement-be
+    spec:
+      containers:
+        - image: l1n77/papaya-usermanagement-be
+          imagePullPolicy: Always
+          name: papaya-usermanagement-be
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: papaya-usermanagement-be
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  type: ClusterIP
+  ports:
+    - name: "papaya-usermanagement-be"
+      port: 8080
+  selector:
+    app: papaya-usermanagement-be
