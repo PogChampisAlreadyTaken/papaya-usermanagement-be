@@ -1,5 +1,7 @@
 package de.PogChampIsAlreadyTaken.Papaya.Webshop;
 
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,6 +13,10 @@ public class Usermanagement {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String hello() {
-        return "Hello Usermanagment, uwu";
+        String hello = "Hello Usermanagement, OwO";
+
+        Jsonb jsonb = JsonbBuilder.create();
+
+        return jsonb.toJson(hello);
     }
 }
