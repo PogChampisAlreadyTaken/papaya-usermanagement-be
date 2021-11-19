@@ -15,7 +15,7 @@ public class UsermanagementTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .body(is("Hello Usermanagment"));
+             .body(is("Hello Usermanagment, uwu"));
     }
 
 }

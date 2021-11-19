@@ -21,6 +21,11 @@ jobs:
         with:
           name: liimootbm
 
+      - name: destroy old pipeline
+        uses: okteto/destroy-pipeline@latest
+        with:
+          name: papaya-usermanagement-be
+
       - name: okteto pipeline
         uses: okteto/pipeline@latest
         with:
