@@ -1,9 +1,9 @@
 name: quarkus-build
 on:
   push:
-    branches:    
-      - '**'       
-      - '!master'  
+    branches:
+      - "**"
+      - "!master"
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
       - name: Check Out Repo
         uses: actions/checkout@v2
 
-       - name: build and package Quarkus
+      - name: build and package Quarkus
         run: |
           chmod +x mvnw |
           sudo ./mvnw package
