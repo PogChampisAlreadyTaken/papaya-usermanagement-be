@@ -2,6 +2,7 @@ package de.PogChampIsAlreadyTaken.Papaya.Webshop.Services.Customer;
 
 import de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Address;
 import de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Customer;
+import io.quarkus.security.Authenticated;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
@@ -10,8 +11,20 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Authenticated
 @Path("/user")
 public class AddressService {
+
+    @GET
+    @Path("address/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCustomerById(@PathParam("id") long id) {
+        Address foundAddress = Address.findById(id);
+        if(foundAddress == null) {
+            return Response.status(404).build();
+        }
+        return Response.ok().entity(foundAddress).build();
+    }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
