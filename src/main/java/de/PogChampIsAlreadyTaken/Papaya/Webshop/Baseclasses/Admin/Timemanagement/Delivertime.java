@@ -8,5 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Delivertime extends PanacheEntityBase {
     @Id
+    public int id;
     public int time_in_minutes;
 }

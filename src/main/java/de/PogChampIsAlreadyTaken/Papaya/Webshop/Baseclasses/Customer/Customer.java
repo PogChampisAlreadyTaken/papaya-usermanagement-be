@@ -14,6 +14,6 @@ public class Customer extends PanacheEntityBase {
     public String last_name;
     public String first_name;
     @Column(nullable = true)
-    public long customer_address_id ;
+    public long customer_address_id;
 }
 

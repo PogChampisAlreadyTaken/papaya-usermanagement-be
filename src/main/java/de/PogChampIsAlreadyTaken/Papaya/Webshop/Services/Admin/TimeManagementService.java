@@ -18,7 +18,7 @@ public class TimeManagementService {
         if(delivertime == null) {
             return Response.status(404).build();
         }
-        return Response.ok().entity(delivertime).build();
+        return Response.ok().entity(delivertime.time_in_minutes).build();
     }
 
 
@@ -29,12 +29,7 @@ public class TimeManagementService {
     @Path("/delivertime")
     public Response postAddress(Delivertime delivertime) {
         Delivertime foundDelivertime = Delivertime.findAll().firstResult();
-        if(foundDelivertime == null){
-            Delivertime.persist((delivertime));
-            return Response.ok().build();
-        }else{
             Delivertime.getEntityManager().merge(delivertime);
-            return Response.ok().entity(foundDelivertime).build();
-        }
+            return Response.ok().build();
     }
 }
