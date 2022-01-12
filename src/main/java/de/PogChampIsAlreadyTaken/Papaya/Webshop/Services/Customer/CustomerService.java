@@ -1,6 +1,6 @@
 package de.PogChampIsAlreadyTaken.Papaya.Webshop.Services.Customer;
 
-import de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Customer;
+import de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Customer.Customer;
 import io.quarkus.security.Authenticated;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;

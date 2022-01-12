@@ -1,4 +1,4 @@
-package de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses;
+package de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Customer;
 
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
