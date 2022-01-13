@@ -10,6 +10,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Franziska Hesselfeld
+ */
 @Authenticated
 @Path("/user")
 public class AddressService {

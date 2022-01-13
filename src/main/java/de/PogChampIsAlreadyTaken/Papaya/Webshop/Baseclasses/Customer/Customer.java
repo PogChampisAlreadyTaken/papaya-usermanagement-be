@@ -6,6 +6,9 @@ import io.smallrye.common.constraint.Nullable;
 
 import javax.persistence.*;
 
+/**
+ * @author Franziska Hesselfeld
+ */
 @Entity
 public class Customer extends PanacheEntityBase {
 
