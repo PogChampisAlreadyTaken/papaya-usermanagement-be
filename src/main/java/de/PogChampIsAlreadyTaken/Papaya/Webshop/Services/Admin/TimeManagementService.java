@@ -19,7 +19,7 @@ public class TimeManagementService {
     @GET
     @Path("/delivertime")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCustomerById() {
+    public Response getCurrentDeliverTime() {
         LOG.info("GET current deliver time");
 
         Delivertime delivertime = Delivertime.findAll().firstResult();
