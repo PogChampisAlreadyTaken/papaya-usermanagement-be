@@ -28,7 +28,7 @@ public class CustomerService {
 
         if(foundCustomer == null) {
             LOG.error("Customer with id: "+id+" dont exist");
-            return Response.status(404).build();
+            return Response.status(404).entity("Customer not found with given Id: "+id).build();
         }
 
         LOG.info("Return found customer: "+foundCustomer.toString());
@@ -47,6 +47,8 @@ public class CustomerService {
         if(foundCustomer == null){
             LOG.info("Customer was not found but will be created: "+customer.toString());
             customer.persist();
+        } else {
+            return Response.status(409).entity("Customer already exist. Id: "+customer.id).build();
         }
 
         LOG.info("Successful created Customer: "+customer.toString());
@@ -63,7 +65,7 @@ public class CustomerService {
 
         if(foundCustomer == null){
             LOG.error("Customer with id: " + customerId+" was not found");
-            return Response.status(404).build();
+            return Response.status(404).entity("Customer not found with given Id: "+customerId).build();
         }
 
         Customer.deleteById(customerId);

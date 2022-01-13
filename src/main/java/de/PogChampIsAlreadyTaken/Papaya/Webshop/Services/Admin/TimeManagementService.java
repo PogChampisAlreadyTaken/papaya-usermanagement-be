@@ -1,6 +1,7 @@
 package de.PogChampIsAlreadyTaken.Papaya.Webshop.Services.Admin;
 
 import de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Admin.Timemanagement.Delivertime;
+import io.quarkus.security.Authenticated;
 import org.jboss.logging.Logger;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.Response;
  * @author Franziska Hesselfeld
  */
 @Path("/timemanagement")
+@Authenticated
 public class TimeManagementService {
 
     private static final Logger LOG = Logger.getLogger(TimeManagementService.class);
