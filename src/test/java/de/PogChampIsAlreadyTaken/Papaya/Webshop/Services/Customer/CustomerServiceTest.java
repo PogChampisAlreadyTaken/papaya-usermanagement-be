@@ -1,6 +1,7 @@
 package de.PogChampIsAlreadyTaken.Papaya.Webshop.Services.Customer;
 
 import de.PogChampIsAlreadyTaken.Papaya.Webshop.Baseclasses.Customer.Customer;
+import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.security.TestSecurity;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
+import javax.transaction.Transactional;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
@@ -15,7 +17,9 @@ import static org.hamcrest.CoreMatchers.is;
 /**
  * @author Franziska Hesselfeld, Moritz Lintterer
  */
+@Transactional
 @QuarkusTest
+@TestTransaction
 class CustomerServiceTest {
     Jsonb jsonb = JsonbBuilder.create();
 
@@ -106,6 +110,7 @@ class CustomerServiceTest {
 
     @Test
     @TestSecurity(authorizationEnabled = false)
+    @TestTransaction
     void updateCustomer() {
         //first change it
         given()
@@ -117,7 +122,7 @@ class CustomerServiceTest {
                 .statusCode(200)
                 .body(is(jsonb.toJson(testCustomerToChange)));
 
-        given()
+       given()
                 .contentType("application/json")
                 .body(jsonb.toJson(testCustomerAlreadyInDatabase))
                 .when()

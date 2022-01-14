@@ -12,6 +12,8 @@ import javax.ws.rs.core.Response;
 /**
  * @author Franziska Hesselfeld
  */
+
+
 @Authenticated
 @Path("/user")
 public class CustomerService {
