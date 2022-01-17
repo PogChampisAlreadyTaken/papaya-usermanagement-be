@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * @author Franziska Hesselfeld
  */
-@Authenticated
+//@Authenticated
 @Path("/user")
 public class AddressService {
 
@@ -56,12 +56,13 @@ public class AddressService {
         if(addressList.isEmpty()){
             LOG.info("Address "+address.toString()+
                     " dont exist and will be created ");
+            address.id = null;
             address.persist();
         }else {
             dummyAddress = addressList.get(0);
         }
 
-        return Response.ok().entity(dummyAddress.id).build();
+        return Response.ok().entity(dummyAddress).build();
     }
 
 
